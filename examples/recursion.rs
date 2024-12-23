@@ -12,7 +12,7 @@
 #![warn(clippy::pedantic)]
 #![cfg_attr(feature = "strict", deny(warnings))]
 
-use genawaiter::sync::{Gen, GenBoxed};
+use genawaiter2::sync::{Gen, GenBoxed};
 
 fn main() {
     for n in countdown(10) {

@@ -6,7 +6,7 @@
 #![warn(clippy::pedantic)]
 #![cfg_attr(feature = "strict", deny(warnings))]
 
-use genawaiter::{sync::gen, yield_};
+use genawaiter2::{sync::gen, yield_};
 
 fn main() {
     let odd_numbers_less_than_ten = gen!({

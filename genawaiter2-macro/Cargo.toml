@@ -1,6 +1,6 @@
 [package]
 name = "genawaiter2-macro"
-version = "0.100.0"
+version = "0.100.1"
 authors = ["Devin R <devin.ragotzy@gmail.com>"]
 license = "MIT/Apache-2.0"
 description = "Convenience macros for generators (genawaiter2)"

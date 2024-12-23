@@ -22,11 +22,11 @@ This crate has these features:
 
 This crate supplies three concrete implementations of generators:
 
-1. [`genawaiter::stack`](stack) – Allocation-free. You should prefer this when possible.
+1. [`genawaiter2::stack`](stack) – Allocation-free. You should prefer this when possible.
 
-2. [`genawaiter::rc`](rc) – This allocates.
+2. [`genawaiter2::rc`](rc) – This allocates.
 
-3. [`genawaiter::sync`](sync) – This allocates, and can be shared between threads.
+3. [`genawaiter2::sync`](sync) – This allocates, and can be shared between threads.
 
    [unus]: https://github.com/whatisaphone/genawaiter/blob/4a2b185/src/waker.rs#L9
    [duo]: https://github.com/whatisaphone/genawaiter/blob/4a2b185/src/rc/engine.rs#L26
@@ -51,7 +51,7 @@ generator using a macro from the `gen` family:
 ```rust
 # #[cfg(feature = "proc_macro")]
 # fn feature_gate() {
-# use genawaiter::{sync::gen, yield_};
+# use genawaiter2::{sync::gen, yield_};
 #
 let count_to_ten = gen!({
     for n in 0..10 {
@@ -73,7 +73,7 @@ family, and then pass the producer to `Gen::new`.
 ```rust
 # #[cfg(feature = "proc_macro")]
 # fn feature_gate() {
-# use genawaiter::{sync::Gen, sync_producer as producer, yield_};
+# use genawaiter2::{sync::Gen, sync_producer as producer, yield_};
 #
 let count_producer = producer!({
     for n in 0..10 {
@@ -92,7 +92,7 @@ If neither of these offers enough control for you, you can always skip the macro
 use the low-level API directly:
 
 ```rust
-# use genawaiter::sync::{Co, Gen};
+# use genawaiter2::sync::{Co, Gen};
 #
 let count_to_ten = Gen::new(|mut co| async move {
     for n in 0..10 {
@@ -124,7 +124,7 @@ ways:
   ```rust
   # #[cfg(feature = "proc_macro")]
   # fn feature_gate() {
-  # use genawaiter::{sync::gen, yield_, GeneratorState};
+  # use genawaiter2::{sync::gen, yield_, GeneratorState};
   #
   let mut generator = gen!({
       yield_!(10);
@@ -140,7 +140,7 @@ ways:
   ```rust
   # #[cfg(feature = "proc_macro")]
   # fn feature_gate() {
-  # use genawaiter::{sync::gen, yield_};
+  # use genawaiter2::{sync::gen, yield_};
   #
   let generator = gen!({
       yield_!(10);
@@ -158,7 +158,7 @@ receives them from the future returned by `yield_`.
 ```rust
 # #[cfg(feature = "proc_macro")]
 # fn feature_gate() {
-# use genawaiter::{sync::gen, yield_};
+# use genawaiter2::{sync::gen, yield_};
 #
 let mut printer = gen!({
     loop {
@@ -179,7 +179,7 @@ function. The consumer will receive this value as a `GeneratorState::Complete`.
 ```rust
 # #[cfg(feature = "proc_macro")]
 # fn feature_gate() {
-# use genawaiter::{sync::gen, yield_, GeneratorState};
+# use genawaiter2::{sync::gen, yield_, GeneratorState};
 #
 let mut generator = gen!({
     yield_!(10);
@@ -199,14 +199,14 @@ to the dependency on `futures` with the `futures03` feature.
 
 ```toml
 [dependencies]
-genawaiter = { version = "...", features = ["futures03"] }
+genawaiter2 = { version = "...", features = ["futures03"] }
 ```
 
 ```rust
 # #[cfg(all(feature = "proc_macro", feature = "futures03"))]
 # fn feature_gate() {
 # use futures::executor::block_on_stream;
-# use genawaiter::{sync::gen, yield_};
+# use genawaiter2::{sync::gen, yield_};
 #
 async fn async_one() -> i32 { 1 }
 async fn async_two() -> i32 { 2 }
@@ -229,7 +229,7 @@ works even without the `futures03` feature.)
 ```rust
 # #[cfg(feature = "proc_macro")]
 # async fn feature_gate() {
-# use genawaiter::{sync::gen, yield_, GeneratorState};
+# use genawaiter2::{sync::gen, yield_, GeneratorState};
 # use std::task::Poll;
 #
 # let mut gen = gen!({
@@ -277,7 +277,7 @@ pub use crate::ops::{Coroutine, Generator, GeneratorState};
 /// # Example
 ///
 /// ```rust
-/// use genawaiter::{sync::Gen, sync_producer as producer, yield_};
+/// use genawaiter2::{sync::Gen, sync_producer as producer, yield_};
 ///
 /// let my_producer = producer!({
 ///     yield_!(10);
@@ -300,7 +300,7 @@ pub use genawaiter2_proc_macro::sync_producer;
 /// # Example
 ///
 /// ```rust
-/// use genawaiter::{rc::Gen, rc_producer as producer, yield_};
+/// use genawaiter2::{rc::Gen, rc_producer as producer, yield_};
 ///
 /// let my_producer = producer!({
 ///     yield_!(10);

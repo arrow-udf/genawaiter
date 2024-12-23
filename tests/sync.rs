@@ -2,7 +2,7 @@
 #![warn(clippy::pedantic)]
 #![cfg_attr(feature = "strict", deny(warnings))]
 
-use genawaiter::sync::{Co, Gen};
+use genawaiter2::sync::{Co, Gen};
 
 async fn odd_numbers_less_than_ten(mut co: Co<i32>) {
     for n in (1..).step_by(2).take_while(|&n| n < 10) {
@@ -37,7 +37,7 @@ fn test_stream() {
 #[cfg(feature = "proc_macro")]
 #[test]
 fn sync_proc_macro_fn() {
-    use genawaiter::{sync::producer_fn, yield_};
+    use genawaiter2::{sync::producer_fn, yield_};
 
     #[producer_fn(u8)]
     async fn odds() {
@@ -53,7 +53,7 @@ fn sync_proc_macro_fn() {
 #[cfg(feature = "proc_macro")]
 #[test]
 fn sync_proc_macro_closure() {
-    use genawaiter::{sync_producer, yield_};
+    use genawaiter2::{sync_producer, yield_};
 
     let gen = Gen::new(sync_producer!({
         let mut n = 1_u8;
@@ -70,7 +70,7 @@ fn sync_proc_macro_closure() {
 #[allow(clippy::let_unit_value)]
 #[test]
 fn sync_proc_macro_fn_method_call() {
-    use genawaiter::{sync::producer_fn, yield_};
+    use genawaiter2::{sync::producer_fn, yield_};
 
     #[producer_fn(u8)]
     async fn odds() {
@@ -78,7 +78,7 @@ fn sync_proc_macro_fn_method_call() {
             let _ = yield_!(n).clone();
         }
     }
-    let gen = genawaiter::sync::Gen::new(odds);
+    let gen = genawaiter2::sync::Gen::new(odds);
     let res = gen.into_iter().collect::<Vec<_>>();
     assert_eq!(vec![1, 3, 5, 7, 9], res)
 }
@@ -86,7 +86,7 @@ fn sync_proc_macro_fn_method_call() {
 #[cfg(feature = "proc_macro")]
 #[test]
 fn sync_convenience_macro() {
-    use genawaiter::{sync::gen, yield_};
+    use genawaiter2::{sync::gen, yield_};
 
     let g = gen!({
         let mut n = 1;
@@ -102,7 +102,7 @@ fn sync_convenience_macro() {
 #[cfg(feature = "proc_macro")]
 #[test]
 fn sync_convenience_macro_resume() {
-    use genawaiter::{sync::gen, yield_, GeneratorState};
+    use genawaiter2::{sync::gen, yield_, GeneratorState};
 
     let mut gen = gen!({
         let resume_arg = yield_!(10_u8);
