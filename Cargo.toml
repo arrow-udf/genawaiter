@@ -2,7 +2,7 @@
 
 [package]
 name = "genawaiter2"
-version = "0.99.1"
+version = "0.100.0"
 authors = ["John Simon <john@whatisaph.one>"]
 edition = "2018"
 license = "MIT"
@@ -16,8 +16,8 @@ include = ["Cargo.toml", "README-crates-io.md", "src/**/*.rs"]
 
 [dependencies]
 futures-core = { version = "0.3.1", optional = true }
-genawaiter2-proc-macro = { version = "0.99.1", path = "./genawaiter2-proc-macro", optional = true }
-genawaiter2-macro = { version = "0.99.1", path = "./genawaiter2-macro" }
+genawaiter2-proc-macro = { version = "0.100.0", path = "./genawaiter2-proc-macro", optional = true }
+genawaiter2-macro = { version = "0.100.0", path = "./genawaiter2-macro" }
 
 [workspace]
 members = ["genawaiter2-macro", "genawaiter2-proc-macro"]
