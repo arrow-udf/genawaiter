@@ -323,7 +323,7 @@ pub use crate::sync::{boxed::GenBoxed, engine::Co, generator::Gen};
 ///
 /// [_See the module-level docs for examples._](.)
 #[cfg(feature = "proc_macro")]
-pub use genawaiter_macro::sync_gen as gen;
+pub use genawaiter2_macro::sync_gen as gen;
 
 /// Turns a function into a producer, which can then be used to create a
 /// generator.
@@ -334,7 +334,7 @@ pub use genawaiter_macro::sync_gen as gen;
 ///
 /// [_See the module-level docs for examples._](.)
 #[cfg(feature = "proc_macro")]
-pub use genawaiter_proc_macro::sync_producer_fn as producer_fn;
+pub use genawaiter2_proc_macro::sync_producer_fn as producer_fn;
 
 mod boxed;
 mod engine;
