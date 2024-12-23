@@ -277,7 +277,7 @@ pub use crate::stack::{
 ///
 /// [_See the module-level docs for examples._](.)
 #[cfg(feature = "proc_macro")]
-pub use genawaiter_macro::stack_let_gen as let_gen;
+pub use genawaiter2_macro::stack_let_gen as let_gen;
 
 /// Creates a generator using a producer defined elsewhere.
 ///
@@ -313,7 +313,7 @@ pub use genawaiter_macro::stack_let_gen as let_gen;
 /// # Examples
 ///
 /// [_See the module-level docs for examples._](.)
-pub use genawaiter_macro::stack_let_gen_using as let_gen_using;
+pub use genawaiter2_macro::stack_let_gen_using as let_gen_using;
 
 /// Turns a function into a producer, which can then be used to create a
 /// generator.
@@ -324,7 +324,7 @@ pub use genawaiter_macro::stack_let_gen_using as let_gen_using;
 ///
 /// [_See the module-level docs for examples._](.)
 #[cfg(feature = "proc_macro")]
-pub use genawaiter_proc_macro::stack_producer_fn as producer_fn;
+pub use genawaiter2_proc_macro::stack_producer_fn as producer_fn;
 
 #[macro_use]
 mod macros;

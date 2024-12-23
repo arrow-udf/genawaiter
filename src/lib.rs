@@ -287,7 +287,7 @@ pub use crate::ops::{Coroutine, Generator, GeneratorState};
 /// # my_generator.resume();
 /// ```
 #[cfg(feature = "proc_macro")]
-pub use genawaiter_proc_macro::sync_producer;
+pub use genawaiter2_proc_macro::sync_producer;
 
 /// Creates a producer for use with [`rc::Gen`].
 ///
@@ -310,10 +310,10 @@ pub use genawaiter_proc_macro::sync_producer;
 /// # my_generator.resume();
 /// ```
 #[cfg(feature = "proc_macro")]
-pub use genawaiter_proc_macro::rc_producer;
+pub use genawaiter2_proc_macro::rc_producer;
 
 #[doc(hidden)] // This is not quite usable currently, so hide it for now.
-pub use genawaiter_proc_macro::stack_producer;
+pub use genawaiter2_proc_macro::stack_producer;
 
 mod core;
 #[macro_use]

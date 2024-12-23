@@ -1,11 +1,11 @@
 [package]
-name = "genawaiter-proc-macro"
+name = "genawaiter2-proc-macro"
 version = "0.99.1"
 authors = ["Devin R <devin.ragotzy@gmail.com>"]
 license = "MIT/Apache-2.0"
-description = "procedural macro for generators (genawaiter)"
+description = "procedural macro for generators (genawaiter2)"
 edition = "2018"
-repository = "https://github.com/whatisaphone/genawaiter"
+repository = "https://github.com/whatisaphone/genawaiter2"
 readme = "../README.md"
 keywords = ["generator", "yield", "coroutine", "async", "await"]
 categories = ["asynchronous", "concurrency", "rust-patterns"]

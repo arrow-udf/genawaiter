@@ -104,24 +104,24 @@ dependencies = [
 ]
 
 [[package]]
-name = "genawaiter"
+name = "genawaiter2"
 version = "0.99.1"
 dependencies = [
  "futures",
  "futures-core",
- "genawaiter-macro",
- "genawaiter-proc-macro",
+ "genawaiter2-macro",
+ "genawaiter2-proc-macro",
  "once_cell",
  "rustversion",
  "trybuild",
 ]
 
 [[package]]
-name = "genawaiter-macro"
+name = "genawaiter2-macro"
 version = "0.99.1"
 
 [[package]]
-name = "genawaiter-proc-macro"
+name = "genawaiter2-proc-macro"
 version = "0.99.1"
 dependencies = [
  "proc-macro-error",
