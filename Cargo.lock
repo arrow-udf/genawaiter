@@ -105,7 +105,7 @@ dependencies = [
 
 [[package]]
 name = "genawaiter2"
-version = "0.100.0"
+version = "0.100.1"
 dependencies = [
  "futures",
  "futures-core",
@@ -118,11 +118,11 @@ dependencies = [
 
 [[package]]
 name = "genawaiter2-macro"
-version = "0.100.0"
+version = "0.100.1"
 
 [[package]]
 name = "genawaiter2-proc-macro"
-version = "0.100.0"
+version = "0.100.1"
 dependencies = [
  "proc-macro-error",
  "proc-macro2",

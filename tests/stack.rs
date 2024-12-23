@@ -2,7 +2,7 @@
 #![warn(clippy::pedantic)]
 #![cfg_attr(feature = "strict", deny(warnings))]
 
-use genawaiter::stack::{let_gen_using, Co, Gen, Shelf};
+use genawaiter2::stack::{let_gen_using, Co, Gen, Shelf};
 
 async fn odd_numbers_less_than_ten(mut co: Co<'_, i32>) {
     for n in (1..).step_by(2).take_while(|&n| n < 10) {
@@ -40,7 +40,7 @@ fn test_stream() {
 #[cfg(feature = "proc_macro")]
 #[test]
 fn stack_proc_macro_fn() {
-    use genawaiter::{stack::producer_fn, yield_};
+    use genawaiter2::{stack::producer_fn, yield_};
     #[producer_fn(u8)]
     async fn odds() {
         for n in (1..).step_by(2).take_while(|&n| n < 10) {
@@ -55,7 +55,7 @@ fn stack_proc_macro_fn() {
 #[cfg(feature = "proc_macro")]
 #[test]
 fn stack_yield_a_func_call() {
-    use genawaiter::{stack::producer_fn, yield_};
+    use genawaiter2::{stack::producer_fn, yield_};
 
     fn pass_thru(n: u8) -> u8 {
         n
@@ -76,7 +76,7 @@ fn stack_yield_a_func_call() {
 #[cfg(feature = "proc_macro")]
 #[test]
 fn stack_yield_loop_break() {
-    use genawaiter::{stack::producer_fn, yield_};
+    use genawaiter2::{stack::producer_fn, yield_};
 
     #[producer_fn(u8)]
     async fn odds() {
@@ -101,7 +101,7 @@ fn stack_yield_loop_break() {
 #[cfg(feature = "proc_macro")]
 #[test]
 fn stack_yield_match() {
-    use genawaiter::{stack::producer_fn, yield_};
+    use genawaiter2::{stack::producer_fn, yield_};
 
     #[producer_fn(u8)]
     async fn odds() {
@@ -119,7 +119,7 @@ fn stack_yield_match() {
 
 #[test]
 fn stack_yield_closure_no_macro() {
-    let mut shelf = genawaiter::stack::Shelf::new();
+    let mut shelf = genawaiter2::stack::Shelf::new();
     let gen = unsafe {
         Gen::new(&mut shelf, |mut co| {
             async move {
@@ -139,9 +139,9 @@ fn stack_yield_closure_no_macro() {
 #[cfg(feature = "proc_macro")]
 #[test]
 fn stack_yield_closure() {
-    use genawaiter::{stack_producer, yield_};
+    use genawaiter2::{stack_producer, yield_};
 
-    let mut shelf = genawaiter::stack::Shelf::new();
+    let mut shelf = genawaiter2::stack::Shelf::new();
     let gen = unsafe {
         Gen::new(
             &mut shelf,
@@ -161,7 +161,7 @@ fn stack_yield_closure() {
 #[cfg(feature = "proc_macro")]
 #[test]
 fn stack_convenience_macro() {
-    use genawaiter::{stack::let_gen, yield_};
+    use genawaiter2::{stack::let_gen, yield_};
 
     let_gen!(generator, {
         let mut n = 1;
@@ -177,7 +177,7 @@ fn stack_convenience_macro() {
 #[cfg(feature = "proc_macro")]
 #[test]
 fn stack_convenience_macro_resume() {
-    use genawaiter::{stack::let_gen, yield_, GeneratorState};
+    use genawaiter2::{stack::let_gen, yield_, GeneratorState};
 
     let_gen!(gen, {
         let resume_arg = yield_!(10_u8);
